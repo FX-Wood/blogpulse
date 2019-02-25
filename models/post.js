@@ -1,3 +1,4 @@
+
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const post = sequelize.define('post', {
@@ -7,6 +8,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   post.associate = function(models) {
     // associations can be defined here
+    models.post.belongsTo(models.post)
   };
   return post;
 };
