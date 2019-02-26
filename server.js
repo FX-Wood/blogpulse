@@ -1,9 +1,9 @@
 const express = require('express');
-const db = require('./models');
+const db = require('/models');
 const ejsLayouts = require('express-ejs-layouts');
 const app = express();
 
-app.set('vies engine', 'ejs');
+app.set('view engine', 'ejs');
 app.use(ejsLayouts);
 app.use(express.urlencoded({extended: false}));
 app.use(express.static('static'));

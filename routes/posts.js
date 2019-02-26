@@ -1,9 +1,10 @@
 const express = require('express');
 const db = require('../models');
-const router = express.router();
+const router = express.Router();
 
 // POST /posts - create one post
 router.post('/', function(req,res) {
+    console.log('POST /posts', req.originalUrl)
     db.post.create({
         title: req.body.title,
         content: req.body.content,
@@ -19,6 +20,7 @@ router.post('/', function(req,res) {
 
 // GET /posts/new - send the form for a post
 router.get('/new', function(req,res) {
+    console.log('GET posts/new', req.originalUrl)
     db.author.findAll()
         .then(function(authors) {
             res.render('posts/new', {authors});

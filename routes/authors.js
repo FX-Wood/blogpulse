@@ -1,12 +1,12 @@
 const express = require('express');
 const db = require('../models');
-const router = express.router();
+const router = express.Router();
 
 
 
 // GET /authors - reads all authors
 router.get('/', (req,res) => {
-    db.authors.findAll()
+    db.author.findAll()
         .then(authors => {
             if (!authors) throw Error();
             res.render('index', {authors});
