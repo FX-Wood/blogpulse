@@ -8,30 +8,24 @@ const router = express.Router();
 router.get('/', (req,res) => {
     db.author.findAll()
         .then(authors => {
-            if (!authors) throw Error();
-            res.render('index', {authors});
-        })
-        .catch(err => {
-            res.send(err)
+            res.render('authors/index', {authors});
         })
 })
 
 // POST /authors - creates a new author
 router.post('/', (req, res) => {
+    console.log('POST /authors', req.originalUrl)
     db.author.create({
         name: req.body.name
     })
     .then(author => {
-        if (!author) throw Error();
-        res.redirect('/authors')
-    })
-    .catch(err => {
-        res.send(err)
+        res.send(author)
     })
 })
 
 // GET /authors/new - gets form for a new author
 router.get('/new', (req, res) => {
+    console.log('GET authors/new')
     res.render('authors/new')
 })
 
@@ -42,11 +36,7 @@ router.get('/authors/:id', (req, res) => {
         include: [db.post]
     })
     .then(author => {
-        if (!author) throw Error();
         res.render('authors/show', {author})
-    })
-    .catch(err => {
-        res.send(err)
     })
 })
 

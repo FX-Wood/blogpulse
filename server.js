@@ -1,5 +1,5 @@
 const express = require('express');
-const db = require('/models');
+const db = require('./models');
 const ejsLayouts = require('express-ejs-layouts');
 const app = express();
 
