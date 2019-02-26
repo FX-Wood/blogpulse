@@ -13,9 +13,6 @@ router.post('/', function(req,res) {
     .then(data => {
         res.redirect('/')
     })
-    .catch(err => {
-        res.status(500).render('main/500')
-    })
 })
 
 // GET /posts/new - send the form for a post
@@ -37,11 +34,8 @@ router.get('/:id', (req,res) => {
         include: [db.author]
     })
     .then(post => {
-        if (!post) throw Error();
-        res.render('show', {post})
-    })
-    .catch(err => {
-        res.send("status(500).render('main/404')")
+        console.log(post)
+        res.render('posts/show', {post})
     })
 })
 // PUT /posts/:id - update one post
