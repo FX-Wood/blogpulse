@@ -1,21 +1,21 @@
 {
   "development": {
-    "username": "fxwood",
-    "password": "fxwood",
+    "username": "postgres",
+    "password": "postgres",
     "database": "blogpulse",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
   "test": {
-    "username": "fxwood",
-    "password": "fxwood",
+    "username": "postgres",
+    "password": "postgres",
     "database": "blogpulse",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
   "production": {
-    "username": "fxwood",
-    "password": "fxwood",
+    "username": "postgres",
+    "password": "postgres",
     "database": "blogpulse",
     "host": "127.0.0.1",
     "dialect": "postgres"
