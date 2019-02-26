@@ -8,7 +8,7 @@ router.post('/', function(req,res) {
     db.post.create({
         title: req.body.title,
         content: req.body.content,
-        author_id: req.body.authorId
+        authorId: req.body.authorId
     })
     .then(data => {
         res.redirect('/')
