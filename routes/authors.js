@@ -19,7 +19,7 @@ router.post('/', (req, res) => {
         name: req.body.name
     })
     .then(author => {
-        res.send(author)
+        res.redirect('/authors')
     })
 })
 
@@ -30,8 +30,9 @@ router.get('/new', (req, res) => {
 })
 
 // GET /authors/:id - show one author and their posts
-router.get('/authors/:id', (req, res) => {
-    db.findOne({
+router.get('/:id', (req, res) => {
+    console.log('/authors/:id', req.originalUrl)
+    db.author.findOne({
         where: {id: req.params.id},
         include: [db.post]
     })

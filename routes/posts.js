@@ -31,7 +31,7 @@ router.get('/new', function(req,res) {
 router.get('/:id', (req,res) => {
     db.post.findOne({
         where: {id: req.params.id},
-        include: [db.author]
+        include: [db.comment, db.author]
     })
     .then(post => {
         console.log(post)
