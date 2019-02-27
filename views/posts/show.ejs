@@ -1,35 +1,40 @@
-<h1><%= post.id %>: <%= post.title %></h1>
 
-<p>by <%= post.author.name %></p>
-<div class="well">
-    <p><%= post.content %></p>
+<div class="container-fluid">
+    <div class="container well">
+    <h1><%= post.id %>: <%= post.title %></h1>
 
-    <% var colors = [primary, secondary, success, danger, warning, info, light, dark,] %>
-    <% tags.forEach(function(tag, i) { %>
-        <a class="badge <%= colors[colors.length % i] %>" href="/tags/<%= tag.name %>"> <%= tag.name %></a>
-    <% }) %>
+    <p>by <%= post.author.name %></p>
+    <div class="well">
+        <p><%= post.content %></p>
 
-    <h3>Add a new tag: </h3>
-    <form method="POST" action="/tags">
-        <input type="hidden" name="postId"value="<%= post.id %>">
-        <span>New Label</span> <input type="text" name="name">
-        <input type="submit" value="Tag it!">
-    </form>
+        <% var colors = ['primary', 'secondary', 'success', 'danger', 'warning', 'info', 'light', 'dark',] %>
+        <% tags.forEach(function(tag, i) { %>
+            <a class="badge badge-<%= colors[i % colors.length] %>" href="/tags/<%= tag.name %>"> <%= tag.name %></a>
+        <% }) %>
 
-    <% if (typeof post.comments !== 'undefined') { %>
-    <div class="card">
-        <ul class="list-group">
-    <%      post.comments.forEach(comment => {    %>
-            <li class="list-group-item">"<%= comment.name %> : <%= comment.content %> "</li>
-    <%      })   %>
-    <%  }    %>
-        </ul>
+        <h3>Add a new tag: </h3>
+        <form method="POST" action="/tags">
+            <input type="hidden" name="postId"value="<%= post.id %>">
+            <span>New Label</span> <input type="text" name="name">
+            <input type="submit" value="Tag it!">
+        </form>
+
+        <% if (typeof post.comments !== 'undefined') { %>
+        <div class="card">
+            <ul class="list-group">
+        <%      post.comments.forEach(comment => {    %>
+                <li class="list-group-item">"<%= comment.name %> : <%= comment.content %> "</li>
+        <%      })   %>
+        <%  }    %>
+            </ul>
+        </div>
+        <h2>Add a comment</h2>
+        <form action="/comments" method="POST">
+            <input type="hidden" name="postId" value="<%=post.id %>"><br>
+            <input type="text" name="name" placeholder="Your name..."><br>
+            <input type="text" name="content" placeholder="Your commment..." maxlength="25">
+            <input type="submit" value="Comment!">
+        </form>
     </div>
-    <h2>Add a comment</h2>
-    <form action="/comments" method="POST">
-        <input type="hidden" name="postId" value="<%=post.id %>"><br>
-        <input type="text" name="name" placeholder="Your name..."><br>
-        <input type="text" name="content" placeholder="Your commment..." maxlength="25">
-        <input type="submit" value="Comment!">
-    </form>
+    </div>
 </div>

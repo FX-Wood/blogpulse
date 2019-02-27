@@ -16,12 +16,12 @@ router.get('/:name', function(req,res) {
 router.post('/', function(req,res) {
     db.post.findById(req.body.postId)
     .then(post => {
-        db.findOrCreate({
+        db.tag.findOrCreate({
             where: {name: req.body.name}
         }).spread((tag, created) => {
             post.addTag(tag).then(tag => {
                 res.redirect('/posts/' + post.id)
-            }
+            })
         })
 
     })
