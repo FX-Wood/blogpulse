@@ -39,6 +39,17 @@ router.get('/:id', (req,res) => {
     })
 })
 // PUT /posts/:id - update one post
+router.put('/:id', (req, res) => {
+    db.post.update({
+        where: {id: req.params.id}
+    }, {
+        title: req.body.title,
+        content: req.body.content,
+        authorId: req.body.authorId
+    })
+})
+
+
 
 // DELETE /posts/:id - remove one post
 
