@@ -3,6 +3,19 @@
 <p>by <%= post.author.name %></p>
 <div class="well">
     <p><%= post.content %></p>
+
+    <% var colors = [primary, secondary, success, danger, warning, info, light, dark,] %>
+    <% tags.forEach(function(tag, i) { %>
+        <a class="badge <%= colors[colors.length % i] %>" href="/tags/<%= tag.name %>"> <%= tag.name %></a>
+    <% }) %>
+
+    <h3>Add a new tag: </h3>
+    <form method="POST" action="/tags">
+        <input type="hidden" name="postId"value="<%= post.id %>">
+        <span>New Label</span> <input type="text" name="name">
+        <input type="submit" value="Tag it!">
+    </form>
+
     <% if (typeof post.comments !== 'undefined') { %>
     <div class="card">
         <ul class="list-group">

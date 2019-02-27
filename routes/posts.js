@@ -34,8 +34,10 @@ router.get('/:id', (req,res) => {
         include: [db.comment, db.author]
     })
     .then(post => {
-        console.log(post)
-        res.render('posts/show', {post})
+        post.getTags()
+        .then(tags => {
+            res.render('posts/show', {post, tags})
+        })
     })
 })
 // PUT /posts/:id - update one post
