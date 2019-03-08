@@ -9,6 +9,8 @@ router.post('/', (req,res) => {
         postId: req.body.postId
     }).then(data => {
         res.redirect('/posts/' + req.body.postId)
+    }).catch(function(error) {
+        res.render('main/error',error)
     })
 })
 
