@@ -1,7 +1,10 @@
+require('dotenv').config();
 const express = require('express');
 const db = require('./models');
 const ejsLayouts = require('express-ejs-layouts');
 const app = express();
+
+const port = process.env.PORT || 8080
 
 app.set('view engine', 'ejs');
 app.use(ejsLayouts);
@@ -23,7 +26,7 @@ app.use('/posts', require('./routes/posts'));
 app.use('/comments', require('./routes/comments'))
 app.use('/tags', require('./routes/tags'))
 
-app.listen(3002, () => {
+app.listen(port, () => {
     console.log('blogpulse is running')
-    console.log('listening on 3002')
+    console.log('listening on ' + port)
 })
